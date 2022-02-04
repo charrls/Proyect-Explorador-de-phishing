@@ -17,7 +17,6 @@ public class PalabrasDiferentes extends SimpleFileVisitor<Path> {
             fl = new FileReader(name);
             in = new BufferedReader(fl);
             int contadorLineas = 0;
-            int contadorCaracteres = 0;
             int wordCount = 0;
             int numberCount = 0;
             String linea = null;
@@ -66,7 +65,7 @@ public class PalabrasDiferentes extends SimpleFileVisitor<Path> {
 
             // Mostrar total de palabras diferentes
 
-            System.out.printf("%-50s Palabras diferentes: %4d   Lineas: %4d%n ", name,list.size(), contadorLineas);
+            System.out.printf("%-50s Total de palabras: %4d    Palabras diferentes: %3d   Lineas: %3d%n ", name, wordCount, list.size(), contadorLineas);
             System.out.println(list + "\n");
         }
         return super.visitFile(file, attrs);
@@ -89,10 +88,10 @@ public class PalabrasDiferentes extends SimpleFileVisitor<Path> {
         Path startingDir = Paths.get(args[0]);
 
         // clase para procesar los archivos
-        PalabrasDiferentes contadorLineas = new PalabrasDiferentes();
+        PalabrasDiferentes palabras = new PalabrasDiferentes();
 
         // iniciar el recorrido de los archivos
-        Files.walkFileTree(startingDir, contadorLineas);
+        Files.walkFileTree(startingDir, palabras);
 
     }
 }
